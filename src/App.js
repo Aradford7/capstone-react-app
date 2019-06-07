@@ -6,18 +6,41 @@ import NavBar from './components/NavBar/NavBar'
 import {Home} from './layout/Home';
 import {Login} from './layout/Login';
 import {Signup} from './layout/Signup';
-import {ReactToMyReactApp} from './layout/ReactToMyReactApp'
+import ReactToMyReactApp from './layout/SocialApp/ReactToMyReactApp'
 import {Codey} from './layout/Codey';
 import {NoMatch} from './layout/NoMatch';
 
 
-//Styles
+//Styles MUI
 import './App.css';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
+
+const theme = createMuiTheme ({
+    palette: {
+      primary: {
+        light: '#c786d3',
+        main: '#ba68c8',
+        dark : '#82488c',
+        constrastText: "#fff",
+      },
+      secondary: {
+        light: '#ff99bb',
+        main: '#ff80ab',
+        dark: '#b25977',
+        constrastText: "#fff",
+    }
+  }, 
+  typography: {
+    useNextVariants: true,
+  },
+});
 
 class App extends Component{
   render(){
     return (
-      <React.Fragment>
+      <MuiThemeProvider theme = {theme}>
+        <div className = "App">
         <Router>
           <NavBar/>
           <div className = "container">
@@ -31,7 +54,8 @@ class App extends Component{
             </Switch>
           </div>
         </Router>
-      </React.Fragment>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }

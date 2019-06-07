@@ -7,7 +7,6 @@ import {AppBar, Toolbar, Button} from '@material-ui/core'
 class NavBar extends Component {
     render() {
         return (
-            <div>
             <AppBar>
                 <Toolbar className = "nav-container">
                     <Button color ="inherit" component = {Link} to={routes.SIGNUP}>SIGN UP</Button>
@@ -16,7 +15,6 @@ class NavBar extends Component {
                     <Button color = "inherit" component = {Link} to={routes.RSOCIAL}>REACTIONS</Button>
                 </Toolbar>
             </AppBar>
-            </div>
         )
     }
 }
