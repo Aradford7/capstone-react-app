@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import Reaction from '../../components/Reaction/Reaction'
 //styling
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -23,25 +24,22 @@ export default class ReactToMyReactApp extends Component {
         reacts: null
     }
     componentDidMount(){
-        axios.get('/reacts')
-            .then(res => {
-                console.log(res.data)
+        axios
+            .get('/reacts')
+            .then((res) => {
                 this.setState({
                     reacts: res.data
-                })
+                });
             })
             .catch(err => console.log(err));
     }
-    
-
     render() {
         let recentReactsMarkup = this.state.reacts ? 
-            (this.state.reacts.map(react => <p>{react.body}</p>)
-            ): <p>loading...</p>
-        //to see if screams
+            (this.state.reacts.map((react) =>  <Reaction key = {react.reactId} react={react}/>)
+            ): (<p>loading...</p>)
+        //to see if reacts show
         return (
             <div >
-            
             <AutoGrid markup={recentReactsMarkup}/>
             </div>
         );
@@ -50,11 +48,10 @@ export default class ReactToMyReactApp extends Component {
 
 const AutoGrid = ({markup}) => {
     const classes = useStyles()
-
     return (
         <div className={classes.root}>
         <Grid container spacing = {3}>
-          <Grid item xs>
+          <Grid item sm = {8} xs = {12}>
             <Paper className={classes.paper}>{markup}</Paper>
           </Grid>
           <Grid item sm = {4} xs = {12}>
