@@ -31,6 +31,9 @@ const theme = createMuiTheme ({
         constrastText: "#fff",
     }
   }, 
+  typography: {
+    useNextVariants: true,
+  },
 });
 
 class App extends Component{
