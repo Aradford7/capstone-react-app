@@ -1,0 +1,5 @@
+export const LANDING = '/'
+export const SIGNUP = '/signup'
+export const CODEY  = '/codey'
+export const LOGIN = '/login'
+export const RSOCIAL = '/reacttomyreactapp'
