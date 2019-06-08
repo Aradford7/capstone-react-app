@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 import AppIcon from '../../images/icon.png'
 import withStyles from '@material-ui/core/styles/withStyles'
 import PropTypes from 'prop-types'//use prop types, way a built in method in react for type checking
 //MUI 
+import { PacmanLoader} from 'react-spinners';
 import {Grid, Typography, TextField, Button, Container, Paper} from '@material-ui/core'
 
 
@@ -34,15 +36,21 @@ const styles = {
         color: 'white',
         height: 48,
         padding: '10px auto 10px auto',    
+        position: 'relative'
     },
     customError: {
         color: 'red',
         fontSize: '0.8rem',
+        marginTop: 10,
     },
     login:{
         maxWidth: 800,
-        height: 450,
+        height: 480,
         background:'#c786d3',
+    },
+    progress: {
+        position: 'absolute',
+        color: '#F8E71C'
     }
            
 };
@@ -94,7 +102,7 @@ class Login extends Component {
     render() {
         const {classes} = this.props;
         const {errors, loading} = this.state;
-        
+
         return (
         <Container className = {classes.login}>
             <Grid container className = {classes.form}>
@@ -137,13 +145,21 @@ class Login extends Component {
                             </Typography>
                         )}
 
-                     
+                        <br/>
+                        <small>Don't have an account? Sign up <Link to = "/signup">HERE</Link></small>
+                        <br/>
+
                         <Button 
                             type = "submit" 
                             variant = "contained" 
-                            className = {classes.button}>
+                            className = {classes.button}
+                            disabled = {loading}>
                                 LOGIN 
+                                {loading && (
+                                <PacmanLoader className = {classes.progress}/>)}
                         </Button>
+
+                        
                     </form>
                 </Grid>
                 <Grid item md />
