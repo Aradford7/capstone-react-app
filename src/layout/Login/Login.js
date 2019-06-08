@@ -3,7 +3,9 @@ import AppIcon from '../../images/icon.png'
 import withStyles from '@material-ui/core/styles/withStyles'
 import PropTypes from 'prop-types'//use prop types, way a built in method in react for type checking
 //MUI 
-import {Grid, Typography, TextField} from '@material-ui/core'
+import {Grid, Typography, TextField, Button} from '@material-ui/core'
+
+
 const styles = {
     form: {
         textAlign: 'center',
@@ -11,6 +13,13 @@ const styles = {
     },
     image: {
         margin: '20px auto 20px auto'
+    },
+    pageTitle: {
+        margin: '10px auto 10px auto',
+        textAlign: 'center',
+    },
+    textField: {
+        margin: '10px auto 10px auto'
     },
 };
 
@@ -47,6 +56,12 @@ class Login extends Component {
                     <form noValidate onSubmit = {this.handleSubmit}>
                         <TextField id = "email" name = "email" type = "email" label = "Email" className = {classes.textField}
                             value = {this.state.email} onChange = {this.handleChange} fullWidth/> 
+
+                         <TextField id = "password" name = "password" type = "password" label = "Password" className = {classes.textField}
+                            value = {this.state.password} onChange = {this.handleChange} fullWidth/> 
+                        
+                        <Button type = "submit" variant = "contained" color = "primary" className = {classes.button}>LOGIN</Button>
+
                     </form>
                 </Grid>
                 <Grid item sm />
