@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
+//DayJS npm i --save dayjs is smaller npm package instead of moment
+import dayjs from 'dayjs' 
+import relativeTime from 'dayjs/plugin/relativeTime'
 //MUI stuff
 import withStyles from '@material-ui/core/styles/withStyles';
 import {Card, CardContent,CardMedia} from '@material-ui/core';
@@ -22,6 +25,7 @@ const styles = {
 }
 class Reaction extends Component {
     render() {
+        dayjs.extend(relativeTime)
         const {
             classes,
             react: {
@@ -41,7 +45,7 @@ class Reaction extends Component {
                     className = {classes.image}/>
                         <CardContent className={classes.content}>
                             <Typography variant = "h5" color = "primary" component = {Link} to ={`/users/${userHandle}`}>{userHandle}</Typography>
-                            <Typography variant = "body2" color ="textSecondary">{createdAt}</Typography>
+                            <Typography variant = "body2" color ="textSecondary">{dayjs(createdAt).fromNow()}</Typography>
                             <Typography variant = "body1" >{body}</Typography>
                         </CardContent>
             </Card>
