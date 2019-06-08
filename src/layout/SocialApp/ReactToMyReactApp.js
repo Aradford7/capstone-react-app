@@ -35,7 +35,7 @@ export default class ReactToMyReactApp extends Component {
     }
     render() {
         let recentReactsMarkup = this.state.reacts ? 
-            (this.state.reacts.map((react) =>  <Reaction key = {react.reactId} react={react}/>)
+            (this.state.reacts.map((react) =>  <Reaction  key = {react.reactId} react={react}/>)
             ): (<p>loading...</p>)
         //to see if reacts show
         return (
@@ -66,3 +66,6 @@ const AutoGrid = ({markup}) => {
 
 
 // export default ReactToMyReactApp;
+
+
+//change date with dayjs instead of moment bc of file size!!!

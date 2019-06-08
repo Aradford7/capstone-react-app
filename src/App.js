@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from './components/NavBar/NavBar'
 //Layout routes
 import {Home} from './layout/Home';
-import {Login} from './layout/Login';
+import Login from './layout/Login/Login';
 import {Signup} from './layout/Signup';
 import ReactToMyReactApp from './layout/SocialApp/ReactToMyReactApp'
 import {Codey} from './layout/Codey';
