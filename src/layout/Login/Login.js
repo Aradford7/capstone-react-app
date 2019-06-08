@@ -10,6 +10,7 @@ import {Grid, Typography, TextField, Button, Container, Paper} from '@material-u
 const styles = {
     form: {
         textAlign: 'center',
+        color: 'white'
 
     },
     image: {
@@ -22,6 +23,7 @@ const styles = {
     textField: {
         margin: '10px auto 10px auto',
         width: 600,
+        color: 'white'
     },
     button: {
         marginTop: 20,
@@ -31,17 +33,16 @@ const styles = {
         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
         color: 'white',
         height: 48,
-        padding: '0 30px',    
+        padding: '10px auto 10px auto',    
     },
     customError: {
-        color: 'red'
+        color: 'red',
+        fontSize: '0.8rem',
     },
     login:{
-        width: 800,
+        maxWidth: 800,
         height: 450,
         background:'#c786d3',
-        padding: '0 10px',
-        margin: '20px auto 20px auto'
     }
            
 };
@@ -90,27 +91,29 @@ class Login extends Component {
             [e.target.name]:e.target.value
         });
     };
-   
     render() {
         const {classes} = this.props;
         const {errors, loading} = this.state;
+        
         return (
         <Container className = {classes.login}>
             <Grid container className = {classes.form}>
                 <Grid item md />
                 <Grid item md >
-                    <img src = {AppIcon} alt= "capstone" classesName = {classes.image}/>
                     <Typography variant = "h2" className = {classes.pageTitle}>
-                        Login
+                        Welcome Back!
                     </Typography>
+                  
+                    <img src = {AppIcon} alt= "capstone" classesName = {classes.image}/>
+    
                     <form noValidate onSubmit = {this.handleSubmit}>
                         <TextField 
                         id = "email" 
                         name = "email" 
                         type = "email" 
                         label = "Email" 
-                        helpText = {errors.email}
-                        errors = {errors.email ? true : false}
+                        helperText = {errors.email}
+                        error = {errors.email ? true : false}
                         className = {classes.textField}
                         value = {this.state.email} 
                         onChange = {this.handleChange} 
@@ -121,9 +124,9 @@ class Login extends Component {
                          name = "password" 
                          type = "password" 
                          label = "Password" 
-                         helpText = {errors.password}
-                         errors = {errors.password ? true : false}
                          className = {classes.textField}
+                         helperText = {errors.password}
+                         error = {errors.password ? true : false}
                          value = {this.state.password} 
                          onChange = {this.handleChange} 
                          fullWidth/> 
