@@ -46,9 +46,9 @@ class App extends Component{
           <div className = "container">
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/login" component={Login} />
+              <Route path="/login" component={Login} redirect = "/codey"/>
               <Route path="/signup" component={Signup} />
-              <Route path="/codey" component = {Codey}/>
+              <Route path="/codey" component = {Codey} />
               <Route path="/reacttomyreactapp" component={ReactToMyReactApp} />
               <Route component={NoMatch} />
             </Switch>
