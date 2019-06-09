@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import Reaction from '../../components/Reaction/Reaction'
 import Profile from '../../components/Profile'
 import PropTypes from 'prop-types'

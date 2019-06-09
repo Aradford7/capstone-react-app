@@ -38,7 +38,7 @@ class NavBar extends Component {
                         
 
                             <Link to = "/codey">
-                                <Button color = "inherit" component = {Link} to={"/codey"}><img style = {{width: "25px", height:"25px" }}  src = {cutelogo}/></Button>
+                                <Button color = "inherit" component = {Link} to={"/codey"}><img style = {{width: "25px", height:"25px" }} alt = "" src = {cutelogo}/></Button>
                             </Link>
 
 
@@ -57,7 +57,7 @@ class NavBar extends Component {
                             <Button color ="inherit" component = {Link} to={"/signup"}>SIGN UP</Button>
                             <Button color = "inherit" component = {Link} to={"/"}>HOME</Button>
                             <Button color = "inherit" component = {Link} to={"/reacttomyreactapp"}>REACTIONS</Button>
-                            <Button right color = "inherit" component = {Link} to={"/login"}>LOGIN</Button>
+                            <Button color = "inherit" component = {Link} to={"/login"}>LOGIN</Button>
                       </Fragment>
                   )}
                 </Toolbar>
