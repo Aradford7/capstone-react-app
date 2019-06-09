@@ -3,7 +3,7 @@ import {
     LOADING_DATA,
     LIKE_REACT,
     UNLIKE_REACT,
-    //DELETE_REACT,
+    DELETE_REACT,
     //SET_ERRORS,
     // POST_REACTS,
     // CLEAR_ERRORS,
@@ -89,6 +89,13 @@ import {
       })
       .catch((err) => console.log(err));
   };
+  export const deleteReact= (reactId) => (dispatch) => {
+    axios.delete(`/react/${reactId}`)
+      .then(() => {
+        dispatch({ type: DELETE_REACT, payload: reactId });
+      })
+      .catch((err) => console.log(err));
+  };
   // Submit a comment
 //   export const submitComment = (reactId, commentData) => (dispatch) => {
 //     axios
@@ -107,14 +114,7 @@ import {
 //         });
 //       });
 //   };
-//   export const deleteReact= (reactId) => (dispatch) => {
-//     axios
-//       .delete(`/react/${reactId}`)
-//       .then(() => {
-//         dispatch({ type: DELETE_REACT, payload: reactId });
-//       })
-//       .catch((err) => console.log(err));
-//   };
+
   
 //   export const getUserData = (userHandle) => (dispatch) => {
 //     dispatch({ type: LOADING_DATA });
