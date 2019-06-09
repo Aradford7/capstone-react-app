@@ -11,6 +11,7 @@ class NavBar extends Component {
                 <Toolbar className = "nav-container">
                     <Button color = "inherit" component = {Link} to={routes.CODEY}>CODEY</Button>
                     <Button color = "inherit" component = {Link} to={routes.RSOCIAL}>REACTIONS</Button>
+                    <Button right color = "inherit" component = {Link} to={routes.LOGIN}>LOGIN</Button>
                    
                 </Toolbar>
             </AppBar>
@@ -22,3 +23,4 @@ export default NavBar
 
 //     <Button color ="inherit" component = {Link} to={routes.SIGNUP}>SIGN UP</Button>
 // <Button right color = "inherit" component = {Link} to={routes.LOGIN}>LOGIN</Button>
+// <Button color = "inherit" component = {Link} to={routes.LANDING}>HOME</Button>

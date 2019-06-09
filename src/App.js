@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwtDecode  from 'jwt-decode'
 //Redux
 import {Provider} from 'react-redux';
-import store from './Redux/store'
+import store from './redux/store'
 //Components imports
 import NavBar from './components/NavBar/NavBar'
 import AuthRoute from './Theme/AuthRoute'
 //Layout routes
 import Home from './layout/Home';
-import Login from './layout/Login/Login';
+import Login from './layout/Login';
 import Signup from './layout/Signup/Signup';
 import ReactToMyReactApp from './layout/SocialApp/ReactToMyReactApp'
 import {Codey} from './layout/Codey';

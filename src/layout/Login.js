@@ -2,12 +2,12 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-import AppIcon from '../../images/icon.png'
+import AppIcon from '../layout/images/icon.png'
 import withStyles from '@material-ui/core/styles/withStyles'
 import PropTypes from 'prop-types'//use prop types, way a built in method in react for type checking
 //Redux stufff
 import {connect} from 'react-redux'
-import {loginUser} from '../../Redux/Actions/userActions'
+import {loginUser} from '../redux/Actions/userActions'
 //MUI 
 import { PacmanLoader} from 'react-spinners';
 import {Grid, Typography, TextField, Button, Container,} from '@material-ui/core'
