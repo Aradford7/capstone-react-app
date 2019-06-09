@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {Link} from "react-router-dom"
-import * as routes from "../../constants/routes"
 //Style Stuff
 import {AppBar, Toolbar, Button} from '@material-ui/core'
 
@@ -9,9 +8,9 @@ class NavBar extends Component {
         return (
             <AppBar>
                 <Toolbar className = "nav-container">
-                    <Button color = "inherit" component = {Link} to={routes.CODEY}>CODEY</Button>
-                    <Button color = "inherit" component = {Link} to={routes.RSOCIAL}>REACTIONS</Button>
-                    <Button right color = "inherit" component = {Link} to={routes.LOGIN}>LOGIN</Button>
+                    <Button color = "inherit" component = {Link} to={"/codey"}>CODEY</Button>
+                    <Button color = "inherit" component = {Link} to={"/reacttomyreactapp"}>REACTIONS</Button>
+                    <Button right color = "inherit" component = {Link} to={"/login"}>LOGIN</Button>
                    
                 </Toolbar>
             </AppBar>

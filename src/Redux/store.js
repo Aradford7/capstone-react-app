@@ -1,6 +1,6 @@
-import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
+import {createStore, combineReducers, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk';//store enhancers
-
+import { composeWithDevTools } from 'redux-devtools-extension';
 import userReducer from './Reducers/userReducer'
 import dataReducer from './Reducers/dataReducer'
 import uiReducer from './Reducers/uiReducer'
@@ -18,9 +18,8 @@ const reducers =  combineReducers({
 
 const store = createStore(
     reducers, 
-    initialState, 
-    compose(applyMiddleware(...middleware),
-    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()  
+    initialState,
+    composeWithDevTools(applyMiddleware(...middleware), 
     )
 );
 
