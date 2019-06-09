@@ -26,13 +26,13 @@ class NavBar extends Component {
 
                         <Link to = "/">
                             <MyButton tip = "Home">
-                                <HomeIcon color = " rgb(134,225,243)"/>
+                                <HomeIcon color = "secondary"/>
                             </MyButton>
                         </Link>
 
                         <Link to = "/reacttomyreactapp">
                             <MyButton tip = "Hot">
-                                <HotIcon color = " rgb(134,225,243)"/>
+                                <HotIcon color = "secondary"/>
                             </MyButton>
                         </Link>
                         
@@ -43,11 +43,11 @@ class NavBar extends Component {
 
 
                         <MyButton tip = "Post a React!">
-                                <AddIcon color = " rgb(134,225,243)"/>
+                                <AddIcon color = "secondary"/>
                             </MyButton>
                        
                             <MyButton tip = "Notifications">
-                                <Notifications color = " rgb(134,225,243)"/>
+                                <Notifications color = "secondary"/>
                             </MyButton>
                         
 
