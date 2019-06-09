@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import Reaction from '../../components/Reaction/Reaction'
+import Profile from '../../components/Profile'
 //styling
 import { makeStyles } from '@material-ui/core/styles';
 import {Paper, Grid} from '@material-ui/core';
@@ -55,7 +56,9 @@ const AutoGrid = ({markup}) => {
             <Paper className={classes.paper}>{markup}</Paper>
           </Grid>
           <Grid item sm = {4} xs = {12}>
-            <Paper className={classes.paper}>Profile</Paper>
+            <Paper className={classes.paper}>
+              <Profile/>
+            </Paper>
           </Grid >
         </Grid>
       </div>
