@@ -35,7 +35,7 @@ class Reaction extends Component {
                 userHandle, 
                 reactId, 
                 likeCount,
-                commentCount}} = this. props
+                commentCount}} = this.props
                 console.log(createdAt)
         return (
             <Card className = {classes.card}>
