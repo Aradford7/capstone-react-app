@@ -31,11 +31,13 @@ class DeleteReact extends Component {
     this.props.deleteReact(this.props.reactId);
     this.setState({ open: false });
   };
+
   render() {
     const { classes } = this.props;
 
     return (
       <Fragment>
+
         <MyButton
           tip="Delete React"
           onClick={this.handleOpen}
@@ -43,6 +45,7 @@ class DeleteReact extends Component {
         >
           <DeleteOutline color="secondary" />
         </MyButton>
+
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -50,7 +53,7 @@ class DeleteReact extends Component {
           maxWidth="sm"
         >
           <DialogTitle>
-            Do you reeeeeaaaalllllllyyyyyy want to delete this React ?
+            Are you sure reeeally ...you want to delete this React ?
           </DialogTitle>
 
           <DialogActions>
@@ -62,6 +65,7 @@ class DeleteReact extends Component {
               Delete
             </Button>
           </DialogActions>
+
         </Dialog>
       </Fragment>
     );
@@ -75,6 +79,5 @@ DeleteReact.propTypes = {
 };
 
 export default connect(
-  null,
-  { deleteReact }
-)(withStyles(styles)(DeleteReact));
+  null, 
+  { deleteReact })(withStyles(styles)(DeleteReact));

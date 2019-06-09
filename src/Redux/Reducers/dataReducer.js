@@ -41,10 +41,11 @@ import {
               state.reacts.splice(index, 1);
               return {
                   ...state,
-                  reacts: [action.payload, ...state.screams]
               };
           default:
               return state;
           
       }
   }
+
+  //  reacts: [action.payload, ...state.screams]

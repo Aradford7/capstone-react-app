@@ -57,7 +57,7 @@ class NavBar extends Component {
                             <Button color ="inherit" component = {Link} to={"/signup"}>SIGN UP</Button>
                             <Button color = "inherit" component = {Link} to={"/"}>HOME</Button>
                             <Button color = "inherit" component = {Link} to={"/reacttomyreactapp"}>REACTIONS</Button>
-                            <Button right color = "inherit" component = {Link} to={"/login"}>LOGIN</Button>
+                            <Button right = "true" color = "inherit" component = {Link} to={"/login"}>LOGIN</Button>
                       </Fragment>
                   )}
                 </Toolbar>

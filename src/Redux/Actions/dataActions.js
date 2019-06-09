@@ -7,11 +7,12 @@ import {
     //SET_ERRORS,
     // POST_REACTS,
     CLEAR_ERRORS,
-    // LOADING_UI,
-    // SET_REACT,
-    //STOP_LOADING_UI,
+    LOADING_UI,
+    SET_REACT,
+    STOP_LOADING_UI,
     // SUBMIT_COMMENT
   } from '../types';
+
   import axios from 'axios';
   
   // Get all reacts
@@ -33,19 +34,19 @@ import {
       });
   };
   //show 1 react
-  // export const getReact = (reactId) => (dispatch) => {
-  //   dispatch({ type: LOADING_UI });
-  //   axios
-  //     .get(`/react/${reactId}`)
-  //     .then((res) => {
-  //       dispatch({
-  //         type: SET_REACT,
-  //         payload: res.data
-  //       });
-  //       dispatch({ type: STOP_LOADING_UI });
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
+  export const getReact = (reactId) => (dispatch) => {
+    dispatch({ type: LOADING_UI });
+    axios
+      .get(`/react/${reactId}`)
+      .then((res) => {
+        dispatch({
+          type: SET_REACT,
+          payload: res.data
+        });
+        dispatch({ type: STOP_LOADING_UI });
+      })
+      .catch((err) => console.log(err));
+  };
   // Post a react
 //   export const postReact = (newReact) => (dispatch) => {
 //     dispatch({ type: LOADING_UI });
@@ -109,7 +110,7 @@ import {
 //   };
 
 //delete a react!
-  export const deleteReact= (reactId) => (dispatch) => {
+  export const deleteReact = (reactId) => (dispatch) => {
     axios
       .delete(`/react/${reactId}`)
       .then(() => {
