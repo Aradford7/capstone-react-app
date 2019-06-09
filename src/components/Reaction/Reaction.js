@@ -123,7 +123,7 @@ class Reaction extends Component {
     }
 }
 
-React.propType = {
+Reaction.propType = {
     likeReact: PropTypes.func.isRequired,
     unlikeReact: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,

@@ -117,25 +117,26 @@ import {
         dispatch({ type: DELETE_REACT, payload: reactId });
       })
       .catch((err) => console.log(err));
+      console.log(dispatch)
   };
   
-  // export const getUserData = (userHandle) => (dispatch) => {
-  //   dispatch({ type: LOADING_DATA });
-  //   axios
-  //     .get(`/user/${userHandle}`)
-  //     .then((res) => {
-  //       dispatch({
-  //         type: SET_REACTS,
-  //         payload: res.data.reacts
-  //       });
-  //     })
-  //     .catch(() => {
-  //       dispatch({
-  //         type: SET_REACTS,
-  //         payload: null
-  //       });
-  //     });
-  // };
+  export const getUserData = (userHandle) => (dispatch) => {
+    dispatch({ type: LOADING_DATA });
+    axios
+      .get(`/user/${userHandle}`)
+      .then((res) => {
+        dispatch({
+          type: SET_REACTS,
+          payload: res.data.reacts
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: SET_REACTS,
+          payload: null
+        });
+      });
+  };
   
   export const clearErrors = () => (dispatch) => {
     dispatch({ type: CLEAR_ERRORS });
