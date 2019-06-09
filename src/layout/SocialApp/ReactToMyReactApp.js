@@ -2,9 +2,13 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Reaction from '../../components/Reaction/Reaction'
 import Profile from '../../components/Profile'
+import PropTypes from 'prop-types'
 //styling
 import { makeStyles } from '@material-ui/core/styles';
 import {Paper, Grid} from '@material-ui/core';
+import {connect} from 'react-redux';
+import {getReacts} from '../../redux/Actions/dataActions';
+
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,24 +24,15 @@ const useStyles = makeStyles(theme => ({
   
 
 
-export default class ReactToMyReactApp extends Component {
-    state = {
-        reacts: null
-    }
+class ReactToMyReactApp extends Component {
     componentDidMount(){
-        axios
-            .get('/reacts')
-            .then((res) => {
-                this.setState({
-                    reacts: res.data
-                });
-            })
-            .catch(err => console.log(err));
+     this.props.getReacts();
     }
     render() {
-        let recentReactsMarkup = this.state.reacts ? 
-            (this.state.reacts.map((react) =>  <Reaction  key = {react.reactId} react={react}/>)
-            ): (<p>loading...</p>)
+        const {reacts, loading } =this.props.data;
+        let recentReactsMarkup = !loading ? 
+            (reacts.map((react) =>  <Reaction  key = {react.reactId} react={react}/>)
+            ):(<p>loading...</p>);
         //to see if reacts show
         return (
             <div >
@@ -64,8 +59,17 @@ const AutoGrid = ({markup}) => {
       </div>
     )
 }
-    
 
+ReactToMyReactApp.propTypes = {
+  getReacts: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = state => ({
+  data: state.data
+});
+
+export default connect(mapStateToProps, {getReacts})(ReactToMyReactApp);
 
 
 // export default ReactToMyReactApp;
