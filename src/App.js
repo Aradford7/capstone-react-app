@@ -5,7 +5,7 @@ import NavBar from './components/NavBar/NavBar'
 //Layout routes
 import {Home} from './layout/Home';
 import Login from './layout/Login/Login';
-import {Signup} from './layout/Signup';
+import Signup from './layout/Signup/Signup';
 import ReactToMyReactApp from './layout/SocialApp/ReactToMyReactApp'
 import {Codey} from './layout/Codey';
 import {NoMatch} from './layout/NoMatch';
@@ -34,6 +34,48 @@ const theme = createMuiTheme ({
   typography: {
     useNextVariants: true,
   },
+  form: {
+    textAlign: 'center',
+    color: 'white'
+
+},
+image: {
+    margin: '20px auto 20px auto'
+},
+pageTitle: {
+    margin: '10px auto 10px auto',
+    textAlign: 'center',
+},
+textField: {
+    margin: '10px auto 10px auto',
+    width: 600,
+    color: 'white'
+},
+button: {
+    marginTop: 20,
+    background: 'linear-gradient(45deg, #ff80ab 30%, #ff99bb 90%)',
+    border: 0,
+    borderRadius: 3,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+    color: 'white',
+    height: 48,
+    padding: '10px auto 10px auto',    
+    position: 'relative'
+},
+customError: {
+    color: 'red',
+    fontSize: '0.8rem',
+    marginTop: 10,
+},
+login:{
+    maxWidth: 800,
+    height: 480,
+    background:'#c786d3',
+},
+progress: {
+    position: 'absolute',
+    color: '#F8E71C'
+}
 });
 
 class App extends Component{

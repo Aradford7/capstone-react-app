@@ -34,7 +34,7 @@ class Reaction extends Component {
                 userImage, 
                 userHandle, 
                 reactId, 
-                likeCount, 
+                likeCount,
                 commentCount}} = this. props
                 console.log(createdAt)
         return (

@@ -1,4 +1,5 @@
 
+
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
@@ -9,7 +10,7 @@ import PropTypes from 'prop-types'//use prop types, way a built in method in rea
 import { PacmanLoader} from 'react-spinners';
 import {Grid, Typography, TextField, Button, Container,} from '@material-ui/core'
 
-
+//global themne
 const styles = {
     form: {
         textAlign: 'center',
@@ -44,27 +45,28 @@ const styles = {
         fontSize: '0.8rem',
         marginTop: 10,
     },
-    login:{
+    signup:{
         maxWidth: 800,
-        height: 480,
+        height: 500,
         background:'#c786d3',
     },
     progress: {
         position: 'absolute',
         color: '#F8E71C'
     }
-           
-};
+}
 
 
 
-class Login extends Component {
+class Signup extends Component {
     //handle forms by control component use state or get references
     constructor(){
         super();
         this.state = {
             email: '',
             password: '',
+            confirmPassword: '',
+            username: '',
             loading: false, //when press login button show spinner (cold start cuz fb)
             errors: {}, //arr for errors on form
            
@@ -75,12 +77,15 @@ class Login extends Component {
         this.setState({
             loading:true
         });
-        const userData ={
+        const newUserData ={
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            confirmPassword: this.state.confirmPassword,
+            username: this.state.username,
         }
-        axios.post('/login' , userData)
-            .then(res => {
+        axios
+            .post('/signup' , newUserData)
+            .then((res) => {
                 console.log(res.data);
                 localStorage.setItem('FBIDToken', `Bearer ${res.data.token}`)
                 this.setState({
@@ -106,12 +111,12 @@ class Login extends Component {
         const {errors, loading} = this.state;
 
         return (
-        <Container className = {classes.login}>
+        <Container className = {classes.signup}>
             <Grid container className = {classes.form}>
                 <Grid item md />
                 <Grid item md >
                     <Typography variant = "h2" className = {classes.pageTitle}>
-                        Welcome Back!
+                        Sign Up!
                     </Typography>
                   
                     <img src = {AppIcon} alt= "capstone" classesName = {classes.image}/>
@@ -141,6 +146,30 @@ class Login extends Component {
                          onChange = {this.handleChange} 
                          fullWidth/> 
 
+                        <TextField 
+                         id = "confirmPassword" 
+                         name = "confirmPassword" 
+                         type = "password" 
+                         label = "Confirm Password" 
+                         className = {classes.textField}
+                         helperText = {errors.confirmPassword}
+                         error = {errors.password ? true : false}
+                         value = {this.state.confirmPassword} 
+                         onChange = {this.handleChange} 
+                         fullWidth/> 
+
+                        <TextField 
+                         id = "username" 
+                         name = "username" 
+                         type = "text" 
+                         label = "Username" 
+                         className = {classes.textField}
+                         helperText = {errors.username}
+                         error = {errors.password ? true : false}
+                         value = {this.state.username} 
+                         onChange = {this.handleChange} 
+                         fullWidth/> 
+
                         {errors.general && (
                             <Typography variant = "body2" className = {classes.customError}>
                                 {errors.general}
@@ -148,7 +177,7 @@ class Login extends Component {
                         )}
 
                         <br/>
-                        <small>Don't have an account? Sign up <Link to = "/signup">HERE</Link></small>
+                        <small>Already have an account? Login <Link to = "/login">HERE</Link></small>
                         <br/>
 
                         <Button 
@@ -156,7 +185,7 @@ class Login extends Component {
                             variant = "contained" 
                             className = {classes.button}
                             disabled = {loading}>
-                                LOGIN 
+                                SIGN UP
                                 {loading && (
                                 <PacmanLoader className = {classes.progress}/>)}
                         </Button>
@@ -173,10 +202,10 @@ class Login extends Component {
 };
 
 
-Login.propTypes = {
+Signup.propTypes = {
     classes: PropTypes.object.isRequired
 }
 
 
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(Signup);
