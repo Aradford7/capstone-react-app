@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 import dayjs from 'dayjs'
 //redux
 import { connect } from 'react-redux';
+import {logoutUser, uploadImage} from '../redux/Actions/userActions'
 //MUI stuff
 import {Button, Paper, Typography, Tooltip} from '@material-ui/core';
 import MuiLink from '@material-ui/core/Link';
@@ -79,6 +80,9 @@ class Profile extends Component {
         const fileInput = document.getElementById('imageInput');
         fileInput.click();
     };
+    handleLogout = () => {
+        this.props.logoutUser();
+    };
     render() {
         const {
             classes, 
@@ -89,7 +93,8 @@ class Profile extends Component {
             }
         } = this.props;
 
-        let profileMarkup = !loading ? (authenticated ? (
+        let profileMarkup = !loading ? 
+            (authenticated ? (
             <Paper className = {classes.paper}>
                 <div className = {classes.profile}>
                     <div className = "image-wrapper">
@@ -172,8 +177,12 @@ const mapStateToProps = (state) => ({
     user: state.user
 });
 
+const mapActionsToProps = {logoutUser, uploadImage};
+
 Profile.propTypes = {
+    logoutUser: PropTypes.func.isRequired,
+    uploadImage: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired
 }
-export default connect(mapStateToProps)(withStyles(styles)(Profile))
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Profile))

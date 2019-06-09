@@ -103,7 +103,7 @@ class Login extends Component {
                         Welcome Back!
                     </Typography>
                   
-                    <img src = {AppIcon} alt= "capstone" classesName = {classes.image}/>
+                    <img src = {AppIcon} alt= "capstone" className = {classes.image}/>
     
                     <form noValidate onSubmit = {this.handleSubmit}>
                         <TextField 
