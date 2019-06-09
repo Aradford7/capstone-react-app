@@ -69,9 +69,9 @@ class Login extends Component {
             password: '',
             errors: {}, //arr for errors on form
            
-        }
+        };
     }
-    componentWillRecieveProps(nextProps){
+    componentWillReceiveProps(nextProps) {
         if(nextProps.UI.errors){
             this.setState({errors: nextProps.UI.errors});
         }
@@ -103,7 +103,7 @@ class Login extends Component {
                         Welcome Back!
                     </Typography>
                   
-                    <img src = {AppIcon} alt= "capstone" classesName = {classes.image}/>
+                    <img src = {AppIcon} alt= "capstone" className = {classes.image}/>
     
                     <form noValidate onSubmit = {this.handleSubmit}>
                         <TextField 

@@ -74,7 +74,7 @@ class Signup extends Component {
            
         }
     }
-    componentWillRecieveProps(nextProps){
+    componentWillReceiveProps(nextProps){
         if(nextProps.UI.errors){
             this.setState({errors: nextProps.UI.errors});
         }
@@ -110,7 +110,7 @@ class Signup extends Component {
                         Sign Up!
                     </Typography>
                   
-                    <img src = {AppIcon} alt= "capstone" classesName = {classes.image}/>
+                    <img src = {AppIcon} alt= "capstone" className = {classes.image}/>
     
                     <form noValidate onSubmit = {this.handleSubmit}>
                         <TextField 
