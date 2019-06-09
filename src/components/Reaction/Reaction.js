@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
+import DeleteReact from './DeleteReact'
 //redux
 import {connect} from 'react-redux'
 import {likeReact, unlikeReact} from '../../redux/Actions/dataActions'
-import DeleteReact from '../Reaction/DeleteReact'
 import ReactDialog from './DeleteReact';
 import PropTypes from 'prop-types'
 import MyButton from '../../Theme/MyButton'
@@ -60,13 +60,11 @@ class Reaction extends Component {
                 userHandle, 
                 reactId, 
                 likeCount,
-                commentCount
+                commentCount,
             },
             user: {
-                authenticated,
-                credentials: {username}
-            }
-        } = this.props;
+                authenticated, credentials: {username} }
+            } = this.props;
 
         const likeButton = !authenticated ? (
             <MyButton tip = "Like">
@@ -74,8 +72,7 @@ class Reaction extends Component {
                     <FavoriteBorder  color = "primary"/>
                 </Link>
             </MyButton>
-        ):(
-            this.likedReact() ? (
+        ):this.likedReact() ? (
                 <MyButton tip = "Unlike" onClick = {this.unlikeReact}>
                     <FavoriteIcon color = "primary"/>
                 </MyButton>
@@ -83,12 +80,11 @@ class Reaction extends Component {
                 <MyButton tip = "like" onClick = {this.likeReact}>
                     <FavoriteBorder color = "primary"/>
                 </MyButton>
-            )
-        );
-        const deleteButton = authenticated && userHandle === username ? (
-            <DeleteReact reactId = {reactId}/>
-        ): null
-        
+            );
+            
+            const deleteButton = authenticated && userHandle === username ? (
+                <DeleteReact  reactId = {reactId}/>
+            ):null
         return (
             <Card className = {classes.card}>
                 <CardMedia 
@@ -99,7 +95,6 @@ class Reaction extends Component {
                             <Typography variant = "h5" color = "primary" component = {Link} to ={`/users/${userHandle}`}>{userHandle}</Typography>
                             
                             {deleteButton}
-
                             <Typography variant = "body2" color ="textSecondary">{dayjs(createdAt).fromNow()}</Typography>
                             
                             <Typography variant = "body1" >{body}</Typography>

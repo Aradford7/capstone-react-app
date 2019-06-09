@@ -36,11 +36,10 @@ import {
                   ...state
               };
           case DELETE_REACT:
-              index = state.reacts.findIndex(
-                  (react) => react.reactId === action.payload);
-              state.reacts.splice(index, 1);
+              let i = state.reacts.findIndex(react => react.reactId === action.payload);
+              state.reacts.splice(i, 1);
               return {
-                  ...state,
+                  ...state
               };
           default:
               return state;
