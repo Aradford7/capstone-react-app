@@ -57,5 +57,24 @@ login:{
 progress: {
   position: 'absolute',
   color: '#F8E71C'
+},
+'& hr': {
+  border: 'none',
+  margin: '0 0 10px 0'
+},
+buttons: {
+  textAlign: 'center',
+  '& a':{
+    margin: '20px 10px'
+  }
+},
+invisibleSeparator: {
+  border: 'none',
+  margin: 4
+},
+visibleSeparator: {
+  width: '100%',
+  borderBottom: '1px white',
+  marginBottom: 20
 }
 }

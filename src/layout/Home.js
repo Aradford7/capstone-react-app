@@ -63,6 +63,15 @@ class Home extends Component {
                     >
                     SIGN UP
                 </Button>
+                <br/>   
+                <Button 
+                    type = "submit" 
+                    variant = "contained" 
+                    href = "/login"
+                    className = {classes.button}
+                    >
+                    LOGIN
+                </Button>
             </div>
         )
     }

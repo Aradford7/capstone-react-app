@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import withStyles from '@material-ui/core/styles/withStyles'
 import {Link} from 'react-router-dom'
 import dayjs from 'dayjs'
+import EditDetails from './EditDetails'
 //redux
 import { connect } from 'react-redux';
 import {logoutUser, uploadImage} from '../redux/Actions/userActions'
 //MUI stuff
-import {Button, Paper, Typography, Tooltip} from '@material-ui/core';
+import {Button, Paper, Typography, Tooltip, Container} from '@material-ui/core';
 import MuiLink from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton'
 
@@ -18,10 +19,11 @@ import LocationOn  from '@material-ui/icons/LocationOn';
 import LinkIcon  from '@material-ui/icons/Link';
 import CalendarToday  from '@material-ui/icons/CalendarToday'
 import EditIcon from '@material-ui/icons/Edit'
+import KeyboardReturn from '@material-ui/icons/KeyboardReturn'
 
 const styles =  (theme) => ({
         paper: {
-          padding: 20
+          padding: 20,
         },
         profile: {
           '& .image-wrapper': {
@@ -49,13 +51,22 @@ const styles =  (theme) => ({
               color: theme.palette.primary.main
             }
           },
+          '& .bio-container': {
+              width: 30,
+              textAlign: 'center',
+              height: 100,
+              maxWidth: '100%',
+              
+            
+          },
           '& hr': {
             border: 'none',
             margin: '0 0 10px 0'
           },
           '& svg.button': {
             '&:hover': {
-              cursor: 'pointer'
+              cursor: 'pointer',
+
             }
           }
         },
@@ -121,9 +132,10 @@ class Profile extends Component {
                         </MuiLink>
 
                         <hr/>
-                        {bio && <Typography variant = "body2">{bio}</Typography>}
-                        
+                      
+                        {bio && <Typography variant = "body3">{bio}</Typography>}
                         <hr/>
+                       
                         {location && (
                             <Fragment>
                                 <LocationOn color="primary" /> <span>{location}</span>
@@ -151,6 +163,12 @@ class Profile extends Component {
                         <CalendarToday color = "primary"/>{''}
                         <span>Joined {dayjs(createdAt).format('MMM YYYY')}</span>
                     </div>
+                    <Tooltip title = "Logout" placement = "left">
+                        <IconButton onClick = {this.handleLogout}>
+                            <KeyboardReturn color = "primary"/>
+                        </IconButton>
+                    </Tooltip>
+                    <EditDetails/>
                 </div>
             </Paper>
         ) : (
