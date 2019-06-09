@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import jwtDecode  from 'jwt-decode'
+//Redux
+import {Provider} from 'react-redux';
+import store from './redux/store'
 //Components imports
 import NavBar from './components/NavBar/NavBar'
+import AuthRoute from './Theme/AuthRoute'
 //Layout routes
-import {Home} from './layout/Home';
-import Login from './layout/Login/Login';
-import {Signup} from './layout/Signup';
+import Home from './layout/Home';
+import Login from './layout/Login';
+import Signup from './layout/Signup/Signup';
 import ReactToMyReactApp from './layout/SocialApp/ReactToMyReactApp'
 import {Codey} from './layout/Codey';
 import {NoMatch} from './layout/NoMatch';
@@ -14,40 +19,39 @@ import {NoMatch} from './layout/NoMatch';
 //Styles MUI
 import './App.css';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
+import themeFile from './Theme/theme';
 
-const theme = createMuiTheme ({
-    palette: {
-      primary: {
-        light: '#c786d3',
-        main: '#ba68c8',
-        dark : '#82488c',
-        constrastText: "#fff",
-      },
-      secondary: {
-        light: '#ff99bb',
-        main: '#ff80ab',
-        dark: '#b25977',
-        constrastText: "#fff",
-    }
-  }, 
-  typography: {
-    useNextVariants: true,
-  },
-});
+const theme = createMuiTheme (themeFile);
+ 
+let authenticated;
+
+const token = localStorage.FBIdToken;
+if(token){
+  const decodedToken = jwtDecode(token); //will have prop exp will decode can set session time
+  // console.log(decodedToken);
+  //will expire less than date today
+  if(decodedToken.exp*1000 <Date.now()) {
+      window.location.href = '/login'
+      authenticated = false;
+  }else{
+    authenticated = true;
+  }
+}
 
 class App extends Component{
   render(){
     return (
-      <MuiThemeProvider theme = {theme}>
+      <Provider  store ={store}>
+        <MuiThemeProvider theme = {theme}>
         <div className = "App">
         <Router>
           <NavBar/>
           <div className = "container">
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route path="/login" component={Login} redirect = "/codey"/>
-              <Route path="/signup" component={Signup} />
+              <AuthRoute exact path="/login" component={Login}  authenticated = {authenticated}/>
+              <AuthRoute  exact path="/signup" component={Signup} authenticated = {authenticated}/>
               <Route path="/codey" component = {Codey} />
               <Route path="/reacttomyreactapp" component={ReactToMyReactApp} />
               <Route component={NoMatch} />
@@ -56,6 +60,8 @@ class App extends Component{
         </Router>
         </div>
       </MuiThemeProvider>
+      </Provider>
+      
     );
   }
 }
