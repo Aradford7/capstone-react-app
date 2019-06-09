@@ -38,7 +38,7 @@ class NavBar extends Component {
                         
 
                             <Link to = "/codey">
-                                <Button color = "inherit" component = {Link} to={"/codey"}><img style = {{width: "25px", height:"25px" }}  src = {cutelogo}/></Button>
+                                <Button color = "inherit" component = {Link} to={"/codey"}><img style = {{width: "25px", height:"25px" }} alt = "" src = {cutelogo}/></Button>
                             </Link>
 
 

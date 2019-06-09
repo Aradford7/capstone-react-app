@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom'
 //redux
 import {connect} from 'react-redux'
 import {likeReact, unlikeReact} from '../../redux/Actions/dataActions'
+import DeleteReact from '../Reaction/DeleteReact'
+import ReactDialog from './DeleteReact';
 import PropTypes from 'prop-types'
 import MyButton from '../../Theme/MyButton'
 //DayJS npm i --save dayjs is smaller npm package instead of moment
@@ -64,7 +66,7 @@ class Reaction extends Component {
                 authenticated,
                 credentials: {username}
             }
-        } = this. props;
+        } = this.props;
 
         const likeButton = !authenticated ? (
             <MyButton tip = "Like">
@@ -82,7 +84,11 @@ class Reaction extends Component {
                     <FavoriteBorder color = "primary"/>
                 </MyButton>
             )
-        )
+        );
+        const deleteButton = authenticated && userHandle === username ? (
+            <DeleteReact reactId = {reactId}/>
+        ): null
+        
         return (
             <Card className = {classes.card}>
                 <CardMedia 
@@ -92,7 +98,8 @@ class Reaction extends Component {
                         <CardContent className={classes.content}>
                             <Typography variant = "h5" color = "primary" component = {Link} to ={`/users/${userHandle}`}>{userHandle}</Typography>
                             
-                            
+                            {deleteButton}
+
                             <Typography variant = "body2" color ="textSecondary">{dayjs(createdAt).fromNow()}</Typography>
                             
                             <Typography variant = "body1" >{body}</Typography>
@@ -102,9 +109,14 @@ class Reaction extends Component {
 
                             <MyButton tip = "comments">
                                 <ChatIcon color = "primary"/>
-                                <span>{commentCount} Reactions </span>
+                                <span>{commentCount} comments </span>
                             </MyButton>
                             
+                            <ReactDialog
+                                reactId = {reactId}
+                                userHandle = {userHandle}
+                                openDialog = {this.props.openDialog}
+                            />
                         </CardContent>
             </Card>
         )
@@ -116,7 +128,8 @@ React.propType = {
     unlikeReact: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     react:PropTypes.object.isRequired,
-    classes:PropTypes.object.isRequired
+    classes:PropTypes.object.isRequired,
+    openDialog: PropTypes.bool
 
 }
 const mapStateToProps =  state => ({

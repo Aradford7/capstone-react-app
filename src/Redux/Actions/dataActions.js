@@ -3,13 +3,13 @@ import {
     LOADING_DATA,
     LIKE_REACT,
     UNLIKE_REACT,
-    //DELETE_REACT,
+    DELETE_REACT,
     //SET_ERRORS,
     // POST_REACTS,
-    // CLEAR_ERRORS,
+    CLEAR_ERRORS,
     // LOADING_UI,
     // SET_REACT,
-    // STOP_LOADING_UI,
+    //STOP_LOADING_UI,
     // SUBMIT_COMMENT
   } from '../types';
   import axios from 'axios';
@@ -33,19 +33,19 @@ import {
       });
   };
   //show 1 react
-//   export const getReact = (reactId) => (dispatch) => {
-//     dispatch({ type: LOADING_UI });
-//     axios
-//       .get(`/react/${reactId}`)
-//       .then((res) => {
-//         dispatch({
-//           type: SET_REACT,
-//           payload: res.data
-//         });
-//         dispatch({ type: STOP_LOADING_UI });
-//       })
-//       .catch((err) => console.log(err));
-//   };
+  // export const getReact = (reactId) => (dispatch) => {
+  //   dispatch({ type: LOADING_UI });
+  //   axios
+  //     .get(`/react/${reactId}`)
+  //     .then((res) => {
+  //       dispatch({
+  //         type: SET_REACT,
+  //         payload: res.data
+  //       });
+  //       dispatch({ type: STOP_LOADING_UI });
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
   // Post a react
 //   export const postReact = (newReact) => (dispatch) => {
 //     dispatch({ type: LOADING_UI });
@@ -107,33 +107,35 @@ import {
 //         });
 //       });
 //   };
-//   export const deleteReact= (reactId) => (dispatch) => {
-//     axios
-//       .delete(`/react/${reactId}`)
-//       .then(() => {
-//         dispatch({ type: DELETE_REACT, payload: reactId });
-//       })
-//       .catch((err) => console.log(err));
-//   };
+
+//delete a react!
+  export const deleteReact= (reactId) => (dispatch) => {
+    axios
+      .delete(`/react/${reactId}`)
+      .then(() => {
+        dispatch({ type: DELETE_REACT, payload: reactId });
+      })
+      .catch((err) => console.log(err));
+  };
   
-//   export const getUserData = (userHandle) => (dispatch) => {
-//     dispatch({ type: LOADING_DATA });
-//     axios
-//       .get(`/user/${userHandle}`)
-//       .then((res) => {
-//         dispatch({
-//           type: SET_REACTS,
-//           payload: res.data.reacts
-//         });
-//       })
-//       .catch(() => {
-//         dispatch({
-//           type: SET_REACTS,
-//           payload: null
-//         });
-//       });
-//   };
+  // export const getUserData = (userHandle) => (dispatch) => {
+  //   dispatch({ type: LOADING_DATA });
+  //   axios
+  //     .get(`/user/${userHandle}`)
+  //     .then((res) => {
+  //       dispatch({
+  //         type: SET_REACTS,
+  //         payload: res.data.reacts
+  //       });
+  //     })
+  //     .catch(() => {
+  //       dispatch({
+  //         type: SET_REACTS,
+  //         payload: null
+  //       });
+  //     });
+  // };
   
-//   export const clearErrors = () => (dispatch) => {
-//     dispatch({ type: CLEAR_ERRORS });
-//   };
+  export const clearErrors = () => (dispatch) => {
+    dispatch({ type: CLEAR_ERRORS });
+  };

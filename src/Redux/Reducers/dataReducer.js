@@ -3,7 +3,7 @@ import {
     LIKE_REACT,
     UNLIKE_REACT,
     LOADING_DATA,
-    // DELETE_REACT,
+    DELETE_REACT,
     // POST_REACT,
     // SET_REACT,
     // SUBMIT_COMMENT
@@ -29,10 +29,19 @@ import {
               }
           case LIKE_REACT:
           case UNLIKE_REACT:
-              let index = state.reacts.findIndex((react) => react.reactId === action.payload.reactId);
-              state.reacts[index] = action.payload;
+              let index = state.reacts.findIndex(
+                  (react) => react.reactId === action.payload.reactId);
+              state.react = action.payload;
               return {
                   ...state
+              };
+          case DELETE_REACT:
+              index = state.reacts.findIndex(
+                  (react) => react.reactId === action.payload);
+              state.reacts.splice(index, 1);
+              return {
+                  ...state,
+                  reacts: [action.payload, ...state.screams]
               };
           default:
               return state;
