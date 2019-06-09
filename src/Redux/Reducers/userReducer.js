@@ -51,7 +51,8 @@ export default function(state = initialState, action){
         case UNLIKE_REACT:
             return{
                 ...state,
-                likes:state.likes.filter(like => like.reactId === action.payload.reactId
+                likes:state.likes.filter(
+                    (like) => like.reactId !== action.payload.reactId
                 )
             };
             default:

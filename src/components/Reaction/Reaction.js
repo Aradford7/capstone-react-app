@@ -101,7 +101,7 @@ class Reaction extends Component {
                             <span>{likeCount} Reacts</span>
 
                             <MyButton tip = "comments">
-                                <ChatIcon color = "primary" variant = "body1"/>
+                                <ChatIcon color = "primary"/>
                                 <span>{commentCount} Reactions </span>
                             </MyButton>
                             
