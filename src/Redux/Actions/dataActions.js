@@ -4,10 +4,11 @@ import {
     LIKE_REACT,
     UNLIKE_REACT,
     DELETE_REACT,
-    //SET_ERRORS,
-    // POST_REACTS,
+    SET_ERRORS,
+    POST_REACT,
     // CLEAR_ERRORS,
-    // LOADING_UI,
+    LOADING_UI,
+    CLEAR_ERRORS,
     // SET_REACT,
     // STOP_LOADING_UI,
     // SUBMIT_COMMENT
@@ -46,25 +47,25 @@ import {
 //       })
 //       .catch((err) => console.log(err));
 //   };
-  // Post a react
-//   export const postReact = (newReact) => (dispatch) => {
-//     dispatch({ type: LOADING_UI });
-//     axios
-//       .post('/react', newReact)
-//       .then((res) => {
-//         dispatch({
-//           type: POST_React,
-//           payload: res.data
-//         });
-//         dispatch(clearErrors());
-//       })
-//       .catch((err) => {
-//         dispatch({
-//           type: SET_ERRORS,
-//           payload: err.response.data
-//         });
-//       });
-//   };
+//Post a react
+  export const postReact = (newReact) => (dispatch) => {
+    dispatch({ type: LOADING_UI });
+    axios
+      .post('/react', newReact)
+      .then((res) => {
+        dispatch({
+          type: POST_REACT,
+          payload: res.data
+        });
+        dispatch({type: CLEAR_ERRORS});
+      })
+      .catch((err) => {
+        dispatch({
+          type: SET_ERRORS,
+          payload: err.response.data
+        });
+      });
+  };
   // Like a React
   export const likeReact = (reactId) => (dispatch) => {
     axios
