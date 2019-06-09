@@ -4,7 +4,7 @@ import {
     UNLIKE_REACT,
     LOADING_DATA,
     DELETE_REACT,
-    // POST_REACT,
+    POST_REACT,
     // SET_REACT,
     // SUBMIT_COMMENT
   } from '../types';
@@ -40,6 +40,11 @@ import {
               return {
                   ...state
               };
+          case POST_REACT:
+              return{
+                  ...state,
+                  reacts:[action.payload, ...state.reacts]
+              }
           default:
               return state;
           

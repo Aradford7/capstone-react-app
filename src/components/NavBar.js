@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import {Link} from "react-router-dom"
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
+import PostReact from './Reaction/PostReact'
 import cutelogo from '../layout/images/icon.png'
 //import PostReact  from './Reaction/PostReact'
 //import Notifications from './Notifications';
@@ -10,7 +11,7 @@ import {AppBar, Toolbar, Button} from '@material-ui/core'
 import MyButton from '../Theme/MyButton';
 //icon stuff
 import HomeIcon from '@material-ui/icons/Home';
-import AddIcon from '@material-ui/icons/Add';
+
 import Notifications from '@material-ui/icons/Notifications'
 import HotIcon from '@material-ui/icons/Whatshot'
 
@@ -42,9 +43,7 @@ class NavBar extends Component {
                             </Link>
 
 
-                        <MyButton tip = "Post a React!">
-                                <AddIcon color = "secondary"/>
-                            </MyButton>
+                           <PostReact/>
                        
                             <MyButton tip = "Notifications">
                                 <Notifications color = "secondary"/>
