@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-import AppIcon from '../../images/icon.png'
+import AppIcon from '../images/icon.png'
 import withStyles from '@material-ui/core/styles/withStyles'
 import PropTypes from 'prop-types'//use prop types, way a built in method in react for type checking
 //MUI 
@@ -70,6 +70,11 @@ class Signup extends Component {
             loading: false, //when press login button show spinner (cold start cuz fb)
             errors: {}, //arr for errors on form
            
+        }
+    }
+    componentWillRecieveProps(nextProps){
+        if(nextProps.UI.errors){
+            this.setState({errors: nextProps.UI.errors});
         }
     }
     handleSubmit = (e) =>{

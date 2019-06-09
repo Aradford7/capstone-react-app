@@ -1,7 +1,5 @@
-
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import axios from 'axios'
 import AppIcon from '../layout/images/icon.png'
 import withStyles from '@material-ui/core/styles/withStyles'
 import PropTypes from 'prop-types'//use prop types, way a built in method in react for type checking
@@ -28,6 +26,7 @@ const styles = {
     },
     textField: {
         margin: '10px auto 10px auto',
+        padding:  '10px auto 10px auto',
         width: 600,
         color: 'white'
     },
@@ -70,6 +69,11 @@ class Login extends Component {
             password: '',
             errors: {}, //arr for errors on form
            
+        }
+    }
+    componentWillRecieveProps(nextProps){
+        if(nextProps.UI.errors){
+            this.setState({errors: nextProps.UI.errors});
         }
     }
     handleSubmit = (e) =>{
