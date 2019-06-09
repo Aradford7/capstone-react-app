@@ -15,7 +15,7 @@ export const loginUser = (userData, history) => (dispatch) => {
             setAuthoritzationHeader(res.data.token)
             dispatch(getUserData());
             dispatch({type: CLEAR_ERRORS});
-            history.push('/codey');
+            history.push('/reacttomyreactapp');
             })
             .catch(err => {
                 dispatch({
@@ -33,7 +33,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
             setAuthoritzationHeader(res.data.token)
             dispatch(getUserData());
             dispatch({type: CLEAR_ERRORS});
-            history.push('/codey');
+            history.push('/reacttomyreactapp');
             })
             .catch(err => {
                 dispatch({

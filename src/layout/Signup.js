@@ -2,7 +2,6 @@
 
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import axios from 'axios'
 import AppIcon from '../layout/images/icon.png'
 import withStyles from '@material-ui/core/styles/withStyles'
 import PropTypes from 'prop-types'//use prop types, way a built in method in react for type checking
@@ -91,7 +90,7 @@ class Signup extends Component {
             confirmPassword: this.state.confirmPassword,
             username: this.state.username,
         }
-        this.props.logoutUser(newUserData, this.props.history);
+        this.props.signupUser(newUserData, this.props.history);
     };
     handleChange = (e) => {
         this.setState({

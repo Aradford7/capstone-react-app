@@ -2,7 +2,7 @@ import {
     SET_USER, 
     // SET_ERRORS, 
     // CLEAR_ERRORS,
-    //  LOADING_UI, 
+    // LOADING_UI, 
      SET_AUTHENTICATED, 
      SET_UNAUTHENTICATED} from '../types';
 
