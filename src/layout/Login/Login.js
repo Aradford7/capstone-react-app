@@ -5,6 +5,9 @@ import axios from 'axios'
 import AppIcon from '../../images/icon.png'
 import withStyles from '@material-ui/core/styles/withStyles'
 import PropTypes from 'prop-types'//use prop types, way a built in method in react for type checking
+//Redux stufff
+import {connect} from 'react-redux'
+import {loginUser} from '../../Redux/Actions/userActions'
 //MUI 
 import { PacmanLoader} from 'react-spinners';
 import {Grid, Typography, TextField, Button, Container,} from '@material-ui/core'
@@ -74,7 +77,8 @@ class Login extends Component {
         const userData ={
             email: this.state.email,
             password: this.state.password
-        }
+        };
+        this.props.loginUser(userData, this.props.history)
         
     };
     handleChange = (e) => {
@@ -83,8 +87,8 @@ class Login extends Component {
         });
     };
     render() {
-        const {classes} = this.props;
-        const {errors, loading} = this.state;
+        const {classes, UI: {loading}} = this.props;
+        const {errors} = this.state;
 
         return (
         <Container className = {classes.login}>
@@ -155,9 +159,20 @@ class Login extends Component {
 
 
 Login.propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    loginUser: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
+    UI: PropTypes.object.isRequired
+};
+
+const mapStateToProps = (state) => ({
+    user: state.user,
+    UI: state.UI
+});
+
+const mapActionsToProps = {
+    loginUser
 }
 
 
-
-export default withStyles(styles)(Login);
+export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Login));
