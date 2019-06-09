@@ -3,12 +3,16 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-import AppIcon from '../images/icon.png'
+import AppIcon from '../layout/images/icon.png'
 import withStyles from '@material-ui/core/styles/withStyles'
 import PropTypes from 'prop-types'//use prop types, way a built in method in react for type checking
+//redux stuff
+import {connect} from 'react-redux'
+import{signupUser} from '../redux/Actions/userActions'
 //MUI 
 import { PacmanLoader} from 'react-spinners';
 import {Grid, Typography, TextField, Button, Container,} from '@material-ui/core'
+
 
 //global themne
 const styles = {
@@ -67,7 +71,6 @@ class Signup extends Component {
             password: '',
             confirmPassword: '',
             username: '',
-            loading: false, //when press login button show spinner (cold start cuz fb)
             errors: {}, //arr for errors on form
            
         }
@@ -88,23 +91,7 @@ class Signup extends Component {
             confirmPassword: this.state.confirmPassword,
             username: this.state.username,
         }
-        axios
-            .post('/signup' , newUserData)
-            .then((res) => {
-                console.log(res.data);
-                localStorage.setItem('FBIDToken', `Bearer ${res.data.token}`)
-                this.setState({
-                    loading: false
-                });
-                this.props.history.push('/codey');
-            })
-            .catch(err => {
-                this.setState({
-                    errors: err.response.data,
-                    loading: false
-                })
-            })
-        
+        this.props.logoutUser(newUserData, this.props.history);
     };
     handleChange = (e) => {
         this.setState({
@@ -112,8 +99,8 @@ class Signup extends Component {
         });
     };
     render() {
-        const {classes} = this.props;
-        const {errors, loading} = this.state;
+        const {classes, loading} = this.props;
+        const {errors} = this.state;
 
         return (
         <Container className = {classes.signup}>
@@ -208,9 +195,15 @@ class Signup extends Component {
 
 
 Signup.propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired,
+    UI: PropTypes.object.isRequired,
+    logoutUser: PropTypes.func.isRequired
 }
 
 
-
-export default withStyles(styles)(Signup);
+const mapStateToProps = (state) => ({
+    user: state.user,
+    UI: state.UI
+})
+export default connect(mapStateToProps, {signupUser})(withStyles(styles)(Signup));

@@ -10,7 +10,7 @@ import AuthRoute from './Theme/AuthRoute'
 //Layout routes
 import Home from './layout/Home';
 import Login from './layout/Login';
-import Signup from './layout/Signup/Signup';
+import Signup from './layout/Signup';
 import ReactToMyReactApp from './layout/SocialApp/ReactToMyReactApp'
 import {Codey} from './layout/Codey';
 import {NoMatch} from './layout/NoMatch';
