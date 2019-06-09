@@ -47,7 +47,7 @@ const styles = {
     },
     signup:{
         maxWidth: 800,
-        height: 500,
+        height: 630,
         background:'#c786d3',
     },
     progress: {
