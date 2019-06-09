@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwtDecode  from 'jwt-decode'
+//Redux
+import {Provider} from 'react-redux';
+import store from './Redux/store'
 //Components imports
 import NavBar from './components/NavBar/NavBar'
 import AuthRoute from './Theme/AuthRoute'
@@ -39,7 +42,8 @@ if(token){
 class App extends Component{
   render(){
     return (
-      <MuiThemeProvider theme = {theme}>
+      <Provider  store ={store}>
+        <MuiThemeProvider theme = {theme}>
         <div className = "App">
         <Router>
           <NavBar/>
@@ -56,6 +60,8 @@ class App extends Component{
         </Router>
         </div>
       </MuiThemeProvider>
+      </Provider>
+      
     );
   }
 }
