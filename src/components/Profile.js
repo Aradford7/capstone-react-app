@@ -133,7 +133,7 @@ class Profile extends Component {
 
                         <hr/>
                       
-                        {bio && <Typography variant = "body3">{bio}</Typography>}
+                        {bio && <Typography variant = "body2">{bio}</Typography>}
                         <hr/>
                        
                         {location && (

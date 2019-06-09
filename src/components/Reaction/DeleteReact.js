@@ -10,6 +10,9 @@ import {Button, Dialog, DialogTitle, DialogActions} from '@material-ui/core'
 import DeleteOutline from '@material-ui/icons/DeleteOutline'
 
 const styles = {
+    position: 'absolute',
+    left: '80%',
+    top: '10%',
     
 }
 class DeleteReact extends Component {
