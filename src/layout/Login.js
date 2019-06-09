@@ -69,9 +69,9 @@ class Login extends Component {
             password: '',
             errors: {}, //arr for errors on form
            
-        }
+        };
     }
-    componentWillRecieveProps(nextProps){
+    componentWillReceiveProps(nextProps) {
         if(nextProps.UI.errors){
             this.setState({errors: nextProps.UI.errors});
         }

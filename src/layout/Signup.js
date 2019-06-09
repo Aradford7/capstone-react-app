@@ -74,7 +74,7 @@ class Signup extends Component {
            
         }
     }
-    componentWillRecieveProps(nextProps){
+    componentWillReceiveProps(nextProps){
         if(nextProps.UI.errors){
             this.setState({errors: nextProps.UI.errors});
         }

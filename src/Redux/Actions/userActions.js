@@ -5,6 +5,7 @@ import {
     CLEAR_ERRORS, 
     LOADING_UI,
     SET_UNAUTHENTICATED} from '../types';
+    
 import axios from 'axios'
 
 export const loginUser = (userData, history) => (dispatch) => {
@@ -39,7 +40,7 @@ export const signupUser = (newUserData, history) => (dispatch) => {
                 dispatch({
                     type: SET_ERRORS,
                     payload: err.response.data
-                });
+                })
             });
     }
     
