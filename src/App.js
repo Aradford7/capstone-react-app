@@ -8,7 +8,7 @@ import store from './redux/store';
 import {SET_AUTHENTICATED} from './redux/types';
 import {logoutUser, getUserData} from './redux/Actions/userActions'
 //Components imports
-import NavBar from './components/NavBar/NavBar'
+import NavBar from './components/NavBar'
 import AuthRoute from './Theme/AuthRoute'
 //Layout routes
 import Home from './layout/Home';
