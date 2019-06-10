@@ -5,6 +5,7 @@ import MyButton from '../../Theme/MyButton';
 import dayjs from 'dayjs';
 import {Link} from 'react-router-dom';
 import LikeButton from './LikeButton'
+import Comments from './Comments'
 //Mui
 import { Dialog, DialogContent, CircularProgress, Grid, Typography} from '@material-ui/core'
 //Icons
@@ -20,6 +21,11 @@ const styles = {
     invisibleSeparator: {
         border: 'none',
         margin: 4
+    },
+    visibleSeparator: {
+        width: '100%',
+        borderBottom: '1px solid cyan',
+        marginBottom:20
     },
     profileImage: {
         maxWidth: 200,
@@ -67,6 +73,7 @@ class ReactDialog extends Component {
                commentCount, 
                userImage, 
                userHandle, 
+               comments
            
            }, 
             UI: {loading}
@@ -103,8 +110,9 @@ class ReactDialog extends Component {
                         <ChatIcon color = "primary"/>
                     </MyButton>
                     <span>{commentCount} Reactions </span>
-                    
                 </Grid>
+                <hr className = {classes.visibleSeparator}/>
+                <Comments comments = {comments}/>
             </Grid>
         )
         return(
