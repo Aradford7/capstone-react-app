@@ -8,8 +8,8 @@ import {
     POST_REACT,
     LOADING_UI,
     CLEAR_ERRORS,
-    // SET_REACT,
-    // STOP_LOADING_UI,
+    SET_REACT,
+    STOP_LOADING_UI
     // SUBMIT_COMMENT
   } from '../types';
   import axios from 'axios';
@@ -19,7 +19,7 @@ import {
     dispatch({ type: LOADING_DATA });
     axios
       .get('/reacts')
-      .then((res) => {
+      .then(res => {
         dispatch({
           type: SET_REACTS,
           payload: res.data
@@ -33,19 +33,18 @@ import {
       });
   };
   //show 1 react
-//   export const getReact = (reactId) => (dispatch) => {
-//     dispatch({ type: LOADING_UI });
-//     axios
-//       .get(`/react/${reactId}`)
-//       .then((res) => {
-//         dispatch({
-//           type: SET_REACT,
-//           payload: res.data
-//         });
-//         dispatch({ type: STOP_LOADING_UI });
-//       })
-//       .catch((err) => console.log(err));
-//   };
+  export const getReact = (reactId) => dispatch => {
+    dispatch({ type: LOADING_UI });
+    axios.get(`/react/${reactId}`)
+      .then(res => {
+        dispatch({
+          type: SET_REACT,
+          payload: res.data
+        });
+        dispatch({ type: STOP_LOADING_UI });
+      })
+      .catch(err => console.log(err))
+  };
 //Post a react
   export const postReact = (newReact) => (dispatch) => {
     dispatch({ type: LOADING_UI });

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import DeleteReact from './DeleteReact'
+import ReactDialog from './ReactDialog'
 //redux
 import {connect} from 'react-redux'
 import {likeReact, unlikeReact} from '../../redux/Actions/dataActions'
@@ -103,8 +104,10 @@ class Reaction extends Component {
 
                             <MyButton tip = "comments">
                                 <ChatIcon color = "primary"/>
-                                <span>{commentCount} Reactions </span>
                             </MyButton>
+                                <span>{commentCount} Reactions </span>
+
+                            <ReactDialog reactId = {reactId} userHandle = {userHandle}/>
                             
                         </CardContent>
             </Card>
