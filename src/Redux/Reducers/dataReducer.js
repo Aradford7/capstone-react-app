@@ -37,6 +37,9 @@ import {
           case UNLIKE_REACT:
               let index = state.reacts.findIndex((react) => react.reactId === action.payload.reactId);
               state.reacts[index] = action.payload;
+              if(state.react.reactId === action.payload.reactId){
+                  state.react = action.payload;
+              }
               return {
                   ...state
               };
