@@ -19,7 +19,7 @@ import {
     dispatch({ type: LOADING_DATA });
     axios
       .get('/reacts')
-      .then((res) => {
+      .then(res => {
         dispatch({
           type: SET_REACTS,
           payload: res.data
@@ -33,10 +33,9 @@ import {
       });
   };
   //show 1 react
-  export const getReact = (reactId) => (dispatch) => {
+  export const getReact = (reactId) => dispatch => {
     dispatch({ type: LOADING_UI });
-    axios
-      .get(`/react/${reactId}`)
+    axios.get(`/react/${reactId}`)
       .then(res => {
         dispatch({
           type: SET_REACT,
@@ -44,7 +43,7 @@ import {
         });
         dispatch({ type: STOP_LOADING_UI });
       })
-      .catch(err => console.log(err));
+      .catch(err => console.log(err))
   };
 //Post a react
   export const postReact = (newReact) => (dispatch) => {

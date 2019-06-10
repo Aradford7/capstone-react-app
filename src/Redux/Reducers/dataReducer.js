@@ -5,7 +5,7 @@ import {
     LOADING_DATA,
     DELETE_REACT,
     POST_REACT,
-    // SET_REACT,
+    SET_REACT,
     // SUBMIT_COMMENT
   } from '../types';
   
@@ -24,9 +24,15 @@ import {
               }
           case SET_REACTS:
               return{
+                  ...state,
                   reacts: action.payload,
                   loading:false
-              }
+              };
+         case SET_REACT:
+               return {
+                  ...state,
+                  react: action.payload
+              };
           case LIKE_REACT:
           case UNLIKE_REACT:
               let index = state.reacts.findIndex((react) => react.reactId === action.payload.reactId);
