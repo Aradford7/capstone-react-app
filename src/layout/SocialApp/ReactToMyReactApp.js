@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Reaction from '../../components/Reaction/Reaction'
-import Profile from '../../components/Profile'
+import Profile from '../../components/Profile/Profile';
 import PropTypes from 'prop-types'
 //styling
 import { makeStyles } from '@material-ui/core/styles';
