@@ -6,7 +6,7 @@ import {
     DELETE_REACT,
     POST_REACT,
     SET_REACT,
-    // SUBMIT_COMMENT
+    SUBMIT_COMMENT
   } from '../types';
   
   const initialState = {
@@ -54,6 +54,14 @@ import {
                   ...state,
                   reacts:[action.payload, ...state.reacts]
               };
+          case SUBMIT_COMMENT:
+              return{
+                  ...state,
+                  react: {
+                      ...state.react,
+                      comments: [action.payload, ...state.react.comments]
+                  }
+              }
           default:
               return state;
           

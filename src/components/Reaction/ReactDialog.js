@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import {Link} from 'react-router-dom';
 import LikeButton from './LikeButton'
 import Comments from './Comments'
+import CommentForm from './CommentForm'
 //Mui
 import { Dialog, DialogContent, CircularProgress, Grid, Typography} from '@material-ui/core'
 //Icons
@@ -15,7 +16,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 
 //Redux stuff
 import {connect} from 'react-redux';
-import {getReact} from '../../redux/Actions/dataActions';
+import {getReact, clearErrors} from '../../redux/Actions/dataActions';
 
 const styles = {
     invisibleSeparator: {
@@ -61,6 +62,7 @@ class ReactDialog extends Component {
    }
    handleClose = () => {
     this.setState({open:false});
+    this.props.clearErrors();
    }
    render(){
        const {
@@ -112,6 +114,7 @@ class ReactDialog extends Component {
                     <span>{commentCount} Reactions </span>
                 </Grid>
                 <hr className = {classes.visibleSeparator}/>
+                <CommentForm reactId = {reactId}/>
                 <Comments comments = {comments}/>
             </Grid>
         )
@@ -147,14 +150,17 @@ ReactDialog.propTypes = {
     userHandle: PropTypes.string.isRequired,
     react: PropTypes.object.isRequired,
     UI: PropTypes.object.isRequired,
+    clearErrors: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => ({
     react: state.data.react,
     UI: state.UI
+
 })
 
 const mapActionsToProps = {
-    getReact
+    getReact,
+    clearErrors
 };
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(ReactDialog));
