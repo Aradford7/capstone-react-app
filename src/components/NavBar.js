@@ -24,6 +24,7 @@ class NavBar extends Component {
                 <Toolbar className = "nav-container">
                   {authenticated ? (
                     <Fragment>
+                        
 
                         <Link to = "/">
                             <MyButton tip = "Home">
@@ -42,8 +43,7 @@ class NavBar extends Component {
                                 <Button color = "inherit" component = {Link} to={"/codey"}><img style = {{width: "25px", height:"25px" }} alt = "" src = {cutelogo}/></Button>
                             </Link>
 
-
-                           <PostReact/>
+                            <PostReact/>
                        
                             <MyButton tip = "Notifications">
                                 <Notifications color = "secondary"/>

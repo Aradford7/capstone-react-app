@@ -31,15 +31,30 @@ class PostReact extends Component {
         body: '',
         errors: {}
     };
+    componentWillReceiveProps(nextProps){
+        if(nextProps.UI.errors){
+            this.setState({
+                errors: nextProps.UI.errors
+            })
+        }
+        if(!nextProps.UI.errors && !nextProps.UI.loading) {
+            this.setState({body: '', open: false, errors: {} });
+            this.handleClose();
+        }
+    }
     handleOpen = () => {
         this.setState({open:true})
     };
     handleClose = () => {
-        this.setState({open:false})
+        this.setState({open:false, errors:{}})
     };
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     };
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.postReact({body: this.state.body});
+    }
     render(){
         const {errors} = this.state;
         const {classes, UI: {loading}} = this.props;
@@ -63,19 +78,21 @@ class PostReact extends Component {
                     </DialogTitle>
 
                     <DialogContent>
-                        <form onSubmit = {this.handleSumbit}>
+                        <form onSubmit = {this.handleSubmit}>
                             <TextField
                                 name = "body"
                                 type = "text"
+                                label = "Send a Reaction!"
                                 multiline
                                 rows = "3"
-                                placeholder = "Send Reacts to your friends!"
-                                errors = {errors.body ? true: false}
+                                placeholder = "Send Reactions to your friends!"
+                                error = {errors.body ? true: false}
+                                helperText = {errors.body}
                                 className = {classes.textField}
                                 onChange = {this.handleChange}
                                 fullWidth/>
 
-                            <Button type = "submit" variant = "contained" color = "primary"
+                            <Button type = "submit" variant = "contained" color = "secondary"
                                 className = {classes.submitButton} disabled = {loading}>
                                     SUBMIT 
                                     {loading && (
@@ -92,7 +109,7 @@ class PostReact extends Component {
 }
 
 PostReact.propTypes = {
-    postScream: PropTypes.func.isRequired,
+    postReact: PropTypes.func.isRequired,
     UI: PropTypes.object.isRequired
 };
 

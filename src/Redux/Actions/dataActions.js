@@ -50,21 +50,20 @@ import {
 //Post a react
   export const postReact = (newReact) => (dispatch) => {
     dispatch({ type: LOADING_UI });
-    axios
-      .post('/react', newReact)
-      .then((res) => {
+    axios.post('/react', newReact)
+      .then(res => {
         dispatch({
           type: POST_REACT,
           payload: res.data
         });
         dispatch({type: CLEAR_ERRORS});
       })
-      .catch((err) => {
+      .catch(err => {
         dispatch({
           type: SET_ERRORS,
           payload: err.response.data
-        });
-      });
+        })
+      })
   };
   // Like a React
   export const likeReact = (reactId) => (dispatch) => {

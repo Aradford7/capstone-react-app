@@ -44,7 +44,7 @@ import {
               return{
                   ...state,
                   reacts:[action.payload, ...state.reacts]
-              }
+              };
           default:
               return state;
           
