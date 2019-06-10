@@ -33,7 +33,7 @@ class NavBar extends Component {
                         </Link>
 
                         <Link to = "/reacttomyreactapp">
-                            <MyButton tip = "Hot">
+                            <MyButton tip = "React Chat">
                                 <HotIcon color = "secondary"/>
                             </MyButton>
                         </Link>
@@ -55,7 +55,7 @@ class NavBar extends Component {
                       <Fragment>
                             <Button color ="inherit" component = {Link} to={"/signup"}>SIGN UP</Button>
                             <Button color = "inherit" component = {Link} to={"/"}>HOME</Button>
-                            <Button color = "inherit" component = {Link} to={"/reacttomyreactapp"}>REACTIONS</Button>
+                           
                             <Button color = "inherit" component = {Link} to={"/login"}>LOGIN</Button>
                       </Fragment>
                   )}
@@ -72,6 +72,4 @@ const mapStateToProps = (state) => ({
 });
 export default connect(mapStateToProps)(NavBar) 
 
-//     <Button color ="inherit" component = {Link} to={routes.SIGNUP}>SIGN UP</Button>
-// <Button right color = "inherit" component = {Link} to={routes.LOGIN}>LOGIN</Button>
-// <Button color = "inherit" component = {Link} to={routes.LANDING}>HOME</Button>
+// <Button color = "inherit" component = {Link} to={"/reacttomyreactapp"}>REACTIONS</Button> on home nav 

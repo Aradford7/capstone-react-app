@@ -6,7 +6,7 @@ import MyButton from '../../Theme/MyButton'
 import {Button, Dialog, DialogTitle, DialogContent, TextField, CircularProgress} from '@material-ui/core'
 //redux
 import {connect} from 'react-redux'
-import {postReact} from '../../redux/Actions/dataActions'
+import {postReact, clearErrors} from '../../redux/Actions/dataActions'
 //Icons
 import AddIcon from '@material-ui/icons/Add'
 import CloseIcon from '@material-ui/icons/Close'
@@ -14,15 +14,17 @@ import CloseIcon from '@material-ui/icons/Close'
 const styles = {
     submitButton:{
         position: 'relative',
-        padding: '1px auto 1px auto'
+        padding: '1px auto 1px auto',
+        float: 'right',
+        marginTop: 10
     },
     progressSpinner: {
         position: 'absolute',
     },
     closeButton: {
         position: 'absolute',
-        left: '90%',
-        top: '10%'
+        left: '91%',
+        top: '6%'
     },
 }
 class PostReact extends Component {
@@ -39,13 +41,13 @@ class PostReact extends Component {
         }
         if(!nextProps.UI.errors && !nextProps.UI.loading) {
             this.setState({body: '', open: false, errors: {} });
-            this.handleClose();
         }
     }
     handleOpen = () => {
         this.setState({open:true})
     };
     handleClose = () => {
+        this.props.clearErrors();
         this.setState({open:false, errors:{}})
     };
     handleChange = (e) => {
@@ -91,7 +93,7 @@ class PostReact extends Component {
                                 className = {classes.textField}
                                 onChange = {this.handleChange}
                                 fullWidth/>
-
+                            <br/>   <br/>
                             <Button type = "submit" variant = "contained" color = "secondary"
                                 className = {classes.submitButton} disabled = {loading}>
                                     SUBMIT 
@@ -110,6 +112,7 @@ class PostReact extends Component {
 
 PostReact.propTypes = {
     postReact: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
     UI: PropTypes.object.isRequired
 };
 
@@ -117,5 +120,5 @@ const mapStateToProps = (state) => ({
     UI: state.UI
 })
 
-export default connect(mapStateToProps, {postReact})(withStyles(styles)(PostReact))
+export default connect(mapStateToProps, {postReact , clearErrors})(withStyles(styles)(PostReact))
 
