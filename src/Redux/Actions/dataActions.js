@@ -6,7 +6,6 @@ import {
     DELETE_REACT,
     SET_ERRORS,
     POST_REACT,
-    // CLEAR_ERRORS,
     LOADING_UI,
     CLEAR_ERRORS,
     // SET_REACT,
@@ -134,6 +133,6 @@ import {
 //       });
 //   };
   
-//   export const clearErrors = () => (dispatch) => {
-//     dispatch({ type: CLEAR_ERRORS });
-//   };
+  export const clearErrors = () => (dispatch) => {
+    dispatch({ type: CLEAR_ERRORS });
+  };
