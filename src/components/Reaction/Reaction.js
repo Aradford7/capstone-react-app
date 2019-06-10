@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import DeleteReact from './DeleteReact'
 import ReactDialog from './ReactDialog'
+import LikeButton from './LikeButton'
 //redux
 import {connect} from 'react-redux'
-import {likeReact, unlikeReact} from '../../redux/Actions/dataActions'
 import PropTypes from 'prop-types'
 import MyButton from '../../Theme/MyButton'
 //DayJS npm i --save dayjs is smaller npm package instead of moment
@@ -16,8 +16,7 @@ import {Card, CardContent,CardMedia} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography'
 //Icons
 import ChatIcon from '@material-ui/icons/Chat';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+
 
 
 
@@ -35,20 +34,7 @@ const styles = {
     },
 }
 class Reaction extends Component {
-    likedReact = () => {
-        if(this.props.user.likes && this.props.user.likes.find(
-            like => like.reactId === this.props.react.reactId
-            )
-        )
-        return true;
-        else return false;
-    };
-    likeReact = () => {
-        this.props.likeReact(this.props.react.reactId)
-    }
-    unlikeReact = () => {
-        this.props.unlikeReact(this.props.react.reactId)
-    }
+    
     render() {
         dayjs.extend(relativeTime)
         const {
@@ -66,21 +52,7 @@ class Reaction extends Component {
                 authenticated, credentials: {username} }
             } = this.props;
 
-        const likeButton = !authenticated ? (
-            <MyButton tip = "Like">
-                <Link to = "/login">
-                    <FavoriteBorder  color = "primary"/>
-                </Link>
-            </MyButton>
-        ):this.likedReact() ? (
-                <MyButton tip = "Unlike" onClick = {this.unlikeReact}>
-                    <FavoriteIcon color = "primary"/>
-                </MyButton>
-            ):(
-                <MyButton tip = "like" onClick = {this.likeReact}>
-                    <FavoriteBorder color = "primary"/>
-                </MyButton>
-            );
+       
             
             const deleteButton = authenticated && userHandle === username ? (
                 <DeleteReact  reactId = {reactId}/>
@@ -99,7 +71,7 @@ class Reaction extends Component {
                             
                             <Typography variant = "body1" >{body}</Typography>
 
-                            {likeButton}
+                            <LikeButton reactId = {reactId}/>
                             <span>{likeCount} Reacts</span>
 
                             <MyButton tip = "comments">
@@ -116,8 +88,6 @@ class Reaction extends Component {
 }
 
 React.propType = {
-    likeReact: PropTypes.func.isRequired,
-    unlikeReact: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     react:PropTypes.object.isRequired,
     classes:PropTypes.object.isRequired
@@ -127,9 +97,6 @@ const mapStateToProps =  state => ({
     user: state.user
 })
 
-const mapActionsToProps = {
-    likeReact,
-    unlikeReact
-}
 
-export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(Reaction));
+
+export default connect(mapStateToProps)(withStyles(styles)(Reaction));
