@@ -42,7 +42,6 @@ const styles = {
         marginTop: 50,
         marginBottom: 50
     }
-
 }
 
 class ReactDialog extends Component {
@@ -73,7 +72,9 @@ class ReactDialog extends Component {
         } = this.props
         
         const dialogMarkup = loading ? (
-            <CircularProgress size = {200}/>
+            <div className = {classes.spinnerDiv}>
+                  <CircularProgress size = {200} thickness = {2}/>
+            </div>
         ):(
             <Grid container spacing = {16}>
                 <Grid item sm = {5}>
