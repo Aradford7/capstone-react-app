@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import {Link} from "react-router-dom"
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
-import PostReact from './Reaction/PostReact'
+import PostReact from '../components/Reaction/PostReact'
 import cutelogo from '../layout/images/icon.png'
 //import PostReact  from './Reaction/PostReact'
 //import Notifications from './Notifications';
