@@ -41,10 +41,10 @@ const styles = {
         position: 'absolute',
         left: '90%'
     },
-    // expandButton: {
-    //     position: 'absolute',
-    //     left: '90%'
-    // }
+    expandButton: {
+ 
+        left: '80%'
+    },
     spinnerDiv: {
         textAlign: 'center',
         marginTop: 50,

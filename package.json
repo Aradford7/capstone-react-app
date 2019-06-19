@@ -39,7 +39,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000/reacttomyreactapp/us-central1/api",
+  "proxy": "https://us-central1-reacttomyreactapp.cloudfunctions.net/api",
   "devDependencies": {
     "redux-devtools-extension": "^2.13.8"
   }

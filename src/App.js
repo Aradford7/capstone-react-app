@@ -7,9 +7,11 @@ import {Provider} from 'react-redux';
 import store from './redux/store';
 import {SET_AUTHENTICATED} from './redux/types';
 import {logoutUser, getUserData} from './redux/Actions/userActions'
+
 //Components imports
 import NavBar from './layout/NavBar'
 import AuthRoute from './Theme/AuthRoute'
+
 //Layout routes
 import Home from './layout/Home';
 import Login from './layout/Login';
@@ -17,6 +19,7 @@ import Signup from './layout/Signup';
 import ReactToMyReactApp from './layout/SocialApp/ReactToMyReactApp'
 import {Codey} from './layout/Codey';
 import {NoMatch} from './layout/NoMatch';
+
 
 
 //Styles MUI
@@ -60,6 +63,7 @@ class App extends Component{
               <AuthRoute  exact path="/signup" component={Signup} />
               <Route path="/codey" component = {Codey} />
               <Route path="/reacttomyreactapp" component={ReactToMyReactApp} />
+     
               <Route component={NoMatch} />
             </Switch>
           </div>
