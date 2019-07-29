@@ -1,3 +1,39 @@
+# Real Estate Inspired Responsive Website
+
+### Created By: Anis Mansour , Jomar Mendoza, and Ashley Radford
+
+## Description
+* 
+* 
+
+## Demo our site here: url
+
+ Preview: ![preview]()
+
+## Plans and Wireframing
+  Using Adobe Sketch
+    ![preview]()
+ Our Wireframe
+    ![preview]()
+## Technologies Used:
+* Adobe Sketch
+* React-Redux
+* Firestore
+* Firecloud Functions
+* node.js
+* Express.js
+* Material UI Front-end Framework
+* Deployment to Firestore
+
+## Future Implements
+* 
+* 
+
+## Bugs
+* 
+*
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
