@@ -1,6 +1,6 @@
-# Real Estate Inspired Responsive Website
+# Social Media Twitter Style App
 
-### Created By: Anis Mansour , Jomar Mendoza, and Ashley Radford
+### Created By: Ashley Radford
 
 ## Description
 * 
